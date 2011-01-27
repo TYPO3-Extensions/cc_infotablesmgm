@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description>Static Info Tables Manager</description>
+        <type>module</type>
+        <csh_table></csh_table>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="title">Static Info Tables Manager</label>
+            <label index="info">Info</label>
+            <label index="display">Display data</label>
+            <label index="compare">Compare data</label>
+	    <label index="t3func">TYPO3 functions</label>
+            <label index="import">Import data</label>
+	    <label index="exportTo">Export to</label>
+	    <label index="exportedTo">Exported to:</label>
+	    <label index="withoutLocalizedData">without localized data.</label>
+	    <label index="languageISOCode">Language ISO code:</label>
+	    <label index="ISOCodeExample">(eg.: de)</label>
+	    <label index="createdFile">Created file</label>
+	    <label index="languagePackCreated">The following language pack was created:</label>
+            <label index="exportStatic">Export static data</label>
+            <label index="add_labels">Add language labels</label>
+	    <label index="add_all_labels">Add ALL language labels</label>
+            <label index="create_langpack">Create language pack extension</label>
+            <label index="create_langpack_all">Create ALL language packs</label>
+            <label index="convert">Convert charset</label>
+            <label index="move">Check out/Check in</label>
+            <label index="showDiffOnly">Hide equal records</label>
+        </languageKey>
+        <languageKey index="dk" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+        <languageKey index="no" type="array">
+        </languageKey>
+        <languageKey index="it" type="array">
+        </languageKey>
+        <languageKey index="fr" type="array">
+	    <label index="title">Gestion des tables de données statiques</label>
+            <label index="info">Information sur les tables</label>
+            <label index="display">Présenter les données</label>
+            <label index="compare">Comparer les données</label>
+	    <label index="t3func">Fonctions TYPO3</label>
+            <label index="import">Importer des données</label>
+	    <label index="exportTo">Exporter vers</label>
+	    <label index="exportedTo">Données non localisées exportées vers:</label>
+	    <label index="withoutLocalizedData">sans les données localisées.</label>
+	    <label index="languageISOCode">Code de langue ISO A2:</label>
+	    <label index="ISOCodeExample">(par exemple: fr)</label>
+	    <label index="createdFile">Fichier créé:</label>
+	    <label index="languagePackCreated">L'extension de localisation suivante a été créée:</label>
+            <label index="exportStatic">Exporter les données statiques</label>
+            <label index="add_labels">Ajouter les étiquettes de localisation</label>
+	    <label index="add_all_labels">Ajouter toutes les étiquettes de localisation</label>
+            <label index="create_langpack">Créer une extension de localisation</label>
+            <label index="create_langpack_all">Créer toutes les extensions de localisation</label>
+            <label index="convert">Convertir l'encodage de caractères</label>
+            <label index="move">Check out/Check in</label>
+            <label index="showDiffOnly">Cacher les enregistrements identiques</label>
+        </languageKey>
+        <languageKey index="es" type="array">
+        </languageKey>
+        <languageKey index="nl" type="array">
+        </languageKey>
+        <languageKey index="cz" type="array">
+        </languageKey>
+        <languageKey index="pl" type="array">
+        </languageKey>
+        <languageKey index="si" type="array">
+        </languageKey>
+        <languageKey index="fi" type="array">
+        </languageKey>
+        <languageKey index="tr" type="array">
+        </languageKey>
+        <languageKey index="se" type="array">
+        </languageKey>
+        <languageKey index="pt" type="array">
+        </languageKey>
+        <languageKey index="ru" type="array">
+        </languageKey>
+        <languageKey index="ro" type="array">
+        </languageKey>
+        <languageKey index="ch" type="array">
+        </languageKey>
+        <languageKey index="sk" type="array">
+        </languageKey>
+        <languageKey index="lt" type="array">
+        </languageKey>
+    </data>
+    <orig_hash type="array">
+        <languageKey index="default" type="array">
+            <label index="title" type="integer">252948835</label>
+            <label index="info" type="integer">67476226</label>
+            <label index="display" type="integer">23916554</label>
+            <label index="compare" type="integer">18876558</label>
+            <label index="import" type="integer">128745630</label>
+            <label index="exportStatic" type="integer">210768460</label>
+            <label index="add_labels" type="integer">183491777</label>
+            <label index="create_langpack" type="integer">58555113</label>
+            <label index="create_langpack_all" type="integer">268332829</label>
+            <label index="convert" type="integer">130080638</label>
+            <label index="move" type="integer">64718416</label>
+            <label index="showDiffOnly" type="integer">13725486</label>
+        </languageKey>
+        <languageKey index="dk" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+        <languageKey index="no" type="array">
+        </languageKey>
+        <languageKey index="it" type="array">
+        </languageKey>
+        <languageKey index="fr" type="array">
+        </languageKey>
+        <languageKey index="es" type="array">
+        </languageKey>
+        <languageKey index="nl" type="array">
+        </languageKey>
+        <languageKey index="cz" type="array">
+        </languageKey>
+        <languageKey index="pl" type="array">
+        </languageKey>
+        <languageKey index="si" type="array">
+        </languageKey>
+        <languageKey index="fi" type="array">
+        </languageKey>
+        <languageKey index="tr" type="array">
+        </languageKey>
+        <languageKey index="se" type="array">
+        </languageKey>
+        <languageKey index="pt" type="array">
+        </languageKey>
+        <languageKey index="ru" type="array">
+        </languageKey>
+        <languageKey index="ro" type="array">
+        </languageKey>
+        <languageKey index="ch" type="array">
+        </languageKey>
+        <languageKey index="sk" type="array">
+        </languageKey>
+        <languageKey index="lt" type="array">
+        </languageKey>
+    </orig_hash>
+    <orig_text type="array">
+        <languageKey index="default" type="array">
+        </languageKey>
+        <languageKey index="dk" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+        <languageKey index="no" type="array">
+        </languageKey>
+        <languageKey index="it" type="array">
+        </languageKey>
+        <languageKey index="fr" type="array">
+        </languageKey>
+        <languageKey index="es" type="array">
+        </languageKey>
+        <languageKey index="nl" type="array">
+        </languageKey>
+        <languageKey index="cz" type="array">
+        </languageKey>
+        <languageKey index="pl" type="array">
+        </languageKey>
+        <languageKey index="si" type="array">
+        </languageKey>
+        <languageKey index="fi" type="array">
+        </languageKey>
+        <languageKey index="tr" type="array">
+        </languageKey>
+        <languageKey index="se" type="array">
+        </languageKey>
+        <languageKey index="pt" type="array">
+        </languageKey>
+        <languageKey index="ru" type="array">
+        </languageKey>
+        <languageKey index="ro" type="array">
+        </languageKey>
+        <languageKey index="ch" type="array">
+        </languageKey>
+        <languageKey index="sk" type="array">
+        </languageKey>
+        <languageKey index="lt" type="array">
+        </languageKey>
+    </orig_text>
+</T3locallang>
