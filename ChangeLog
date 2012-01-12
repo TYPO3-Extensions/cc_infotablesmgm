@@ -1,3 +1,7 @@
+2012-01-12  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Fixed bug #33155: Call to deprecated bigDoc::middle method
+
 2011-01-26  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Initial upload

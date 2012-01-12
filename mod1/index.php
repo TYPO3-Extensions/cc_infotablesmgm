@@ -228,7 +228,6 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 	 */
 	function printContent()	{
 
-		$this->content .= $this->doc->middle();
 		$this->content .= $this->doc->endPage();
 		echo $this->content;
 	}
