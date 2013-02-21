@@ -3,6 +3,7 @@
 	* Resolves #45690: Require TYPO3 4.7
 	* Updated version to 2.4.0
 	* Resolves #45691: Always keep tables utf-8-encoded
+	* Resolves #45732: Connect static_territories with static_countries
 	
 2012-01-12  Stanislas Rolland  <typo3@sjbr.ca>
 
