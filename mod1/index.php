@@ -38,7 +38,6 @@ $GLOBALS['BE_USER']->modAccess($MCONF,1);	// This checks permissions and exits i
 	// DEFAULT initialization of a module [END]
 
 require_once (t3lib_extMgm::extPath('cc_infotablesmgm').'class.tx_ccinfotablesmgm_div.php');
-require_once (t3lib_extMgm::extPath('cc_infotablesmgm').'class.tx_ccinfotablesmgm_encoding.php');
 
 if (!function_exists('array_diff_key')) {
 	/**
@@ -136,7 +135,6 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 				'compare' => $GLOBALS['LANG']->getLL('compare'),
 				'-' => '------------------------',
 				'add_labels' => $GLOBALS['LANG']->getLL('add_labels'),
-				'convert' => $GLOBALS['LANG']->getLL('convert'),
 				't3func' => $GLOBALS['LANG']->getLL('t3func'),
 				'--' => '------------------------',
 				'import' => $GLOBALS['LANG']->getLL('import'),
@@ -153,10 +151,6 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 			'selectedTable' => '',
 			'showDiffOnly' => 1,
 			'useUidAsIndex' => 0,
-
-			'local_encoding' => '',
-			'source_encoding' => '',
-			'dest_encoding' => '',
 		);
 		parent::menuConfig();
 	}
@@ -254,10 +248,6 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 
 			case 'compare':
 				$this->content .= $this->renderCompare();
-			break;
-
-			case 'convert':
-				$this->content .= $this->renderConvert();
 			break;
 
 			case 'import':
@@ -532,50 +522,6 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		$content .= '</form><form action="" method="post">';
 
 		return $this->doc->section($this->MOD_MENU['function']['t3func'],$content,0,1);
-	}
-
-	/**
-	 * renderConvert
-	 */
-	function renderConvert () {
-
-		$content = '';
-		$content .= '</form><form action="" method="post">';
-
-		if(t3lib_div::_GP('convert')) {
-			$prefix = t3lib_div::_GP('prefix');
-			$content .= '<p>'.htmlspecialchars($prefix.$this->MOD_SETTINGS['table'].': '.$this->MOD_SETTINGS['source_encoding'].' > '.$this->MOD_SETTINGS['dest_encoding']).'</p>';
-			tx_ccinfotablesmgm_encoding::convertEncodingTable($prefix.$this->MOD_SETTINGS['table'], $this->MOD_SETTINGS['source_encoding'], $this->MOD_SETTINGS['dest_encoding']);
-			$content .= '<p>Done</p>';
-
-		} else {
-
-			$content .= '<br /><br />';
-			$content .= tx_ccinfotablesmgm_div::getFuncMenu('SET[table]',$this->MOD_SETTINGS['table'],$this->MOD_MENU['table']);
-			$content .= '<br /><br />';
-            $content .= '<table border="0" cellspacing="0">';
-            $content .= '<tr>
-							<td>Source charset:</td>
-							<td>&nbsp;</td>
-							<td>Destination charset:</td>
-						</tr>';
-            $content .= '<tr>
-							<td>'.tx_ccinfotablesmgm_encoding::getEncodingSelect('SET[source_encoding]', '', '').'</td>
-							<td>&nbsp;</td>
-							<td>'.tx_ccinfotablesmgm_encoding::getEncodingSelect('SET[dest_encoding]', '', 'utf-8').'</td>
-							</tr>';
-            $content .= '</table>';
-
-            $content .= '<br /><input type="radio" name="prefix" value="cc_"> local management tables (cc_static_...)';
-            $content .= '<br /><input type="radio" name="prefix" value=""> original tables (static_...)';
-
-			$content .= '<br /><br />';
-			$content .= '<input type="submit" name="convert" value="Convert" />';
-		}
-
-		$content .= '</form><form action="" method="post">';
-
-		return $this->doc->section($GLOBALS['LANG']->getLL('convert'),$content,0,1);
 	}
 
 	/**
