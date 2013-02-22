@@ -2,6 +2,7 @@
 
 	* Resolves #45764: Connect static_country_zones to static_countries
 	* Apply TCA userFuncs to Static Info Tables Manager tables
+	* Fixes #45766: Incorrect label in backend module regarding localization labels and language packs
 
 2013-02-21  Stanislas Rolland  <typo3@sjbr.ca>
 

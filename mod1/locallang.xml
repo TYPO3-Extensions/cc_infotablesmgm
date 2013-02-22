@@ -18,8 +18,8 @@
 	    <label index="exportTo">Export to</label>
 	    <label index="exportedTo">Exported to:</label>
 	    <label index="withoutLocalizedData">without localized data.</label>
-	    <label index="languageISOCode">Language ISO code:</label>
-	    <label index="ISOCodeExample">(eg.: de)</label>
+	    <label index="languageISOCode">Language ISO A2 code optionaly followed by A2 country code:</label>
+	    <label index="ISOCodeExample">(eg.: de or pt_BR)</label>
 	    <label index="createdFile">Created file</label>
 	    <label index="languagePackCreated">The following language pack was created:</label>
             <label index="exportStatic">Export static data</label>
@@ -49,8 +49,8 @@
 	    <label index="exportTo">Exporter vers</label>
 	    <label index="exportedTo">Données non localisées exportées vers:</label>
 	    <label index="withoutLocalizedData">sans les données localisées.</label>
-	    <label index="languageISOCode">Code de langue ISO A2:</label>
-	    <label index="ISOCodeExample">(par exemple: fr)</label>
+	    <label index="languageISOCode">Code de langue ISO A2 et, optionnellement, code de pays ISO A2:</label>
+	    <label index="ISOCodeExample">(par exemple: fr ou fr_CA)</label>
 	    <label index="createdFile">Fichier créé:</label>
 	    <label index="languagePackCreated">L'extension de localisation suivante a été créée:</label>
             <label index="exportStatic">Exporter les données statiques</label>
