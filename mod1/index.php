@@ -479,25 +479,25 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		}
 		ksort($iso2typoDB);
 
-		//$renderedIsoArray = 'Count t3lib_cs::isoArray: '.count($csconv->isoArray).t3lib_div::view_array($csconv->isoArray);
-		$renderedIso2typo = 'Count iso2typo (t3lib_cs): '.count($iso2typo).t3lib_div::view_array($iso2typo);
-		$renderedTypo2iso = 'Count iso2typo (static_languages): '.count($iso2typoDB).t3lib_div::view_array($iso2typoDB);
+		//$renderedIsoArray = 'Count t3lib_cs::isoArray: '.count($csconv->isoArray).t3lib_utility_Debug::viewArray($csconv->isoArray);
+		$renderedIso2typo = 'Count iso2typo (t3lib_cs): '.count($iso2typo) . t3lib_utility_Debug::viewArray($iso2typo);
+		$renderedTypo2iso = 'Count iso2typo (static_languages): '.count($iso2typoDB)  . t3lib_utility_Debug::viewArray($iso2typoDB);
 
 		$differs = array();
 
 		$renderedDiff = 'Diff:';
 		$arrDiff = array_diff($iso2typo, $iso2typoDB);
 		$differs = array_merge($differs, array_keys($arrDiff));
-		$renderedDiff.= '<br />'.t3lib_div::view_array($arrDiff);
+		$renderedDiff.= '<br />' . t3lib_utility_Debug::viewArray($arrDiff);
 		$arrDiff = array_diff($iso2typoDB, $iso2typo);
 		$differs = array_merge($differs, array_keys($arrDiff));
-		$renderedDiff.= '<br />'.t3lib_div::view_array($arrDiff);
+		$renderedDiff.= '<br />' . t3lib_utility_Debug::viewArray($arrDiff);
 		$arrDiff = array_diff_key($iso2typo, $iso2typoDB);
 		$differs = array_merge($differs, array_keys($arrDiff));
-		$renderedDiff.= '<br />'.t3lib_div::view_array($arrDiff);
+		$renderedDiff.= '<br />' . t3lib_utility_Debug::viewArray($arrDiff);
 		$arrDiff = array_diff_key($iso2typoDB, $iso2typo);
 		$differs = array_merge($differs, array_keys($arrDiff));
-		$renderedDiff.= '<br />'.t3lib_div::view_array($arrDiff);
+		$renderedDiff.= '<br />' . t3lib_utility_Debug::viewArray($arrDiff);
 
 		$content .= '<br /><input type="submit" name="update" value="Update DB" />';
 		$content .= '<br /><br />';

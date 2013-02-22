@@ -2,6 +2,8 @@
 
 	* Resolves #45732: Connect static_territories with static_countries
 	* Resolves #45737: Connect static_countries to static_currencies
+	* Fixes #45739: Call to deprecated t3lib_div::view_array
+
 
 2013-02-20  Stanislas Rolland  <typo3@sjbr.ca>
 
