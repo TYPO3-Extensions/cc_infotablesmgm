@@ -35,6 +35,12 @@ if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
 	// Make the extension constraints available when creating language packs
 require_once(t3lib_extMgm::extPath($_EXTKEY) . 'ext_emconf.php');
-$TYPO3_CONF_VARS['EXTCONF'][$_EXTKEY]['constraints'] = $EM_CONF[$_EXTKEY]['constraints'];
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF'][$_EXTKEY]['constraints'] = $EM_CONF[$_EXTKEY]['constraints'];
+
+if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['static_info_tables']['tables'])) {
+	foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['static_info_tables']['tables'] as $table => $conf) {
+		$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['static_info_tables']['tables']['cc_' . $table] = $conf;
+	}
+}
 
 ?>
