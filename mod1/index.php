@@ -473,8 +473,12 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		}
 
 		$iso2typoDB = array();
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('lg_iso_2,lg_country_iso_2,lg_typo3', 'cc_static_languages', 'lg_typo3!=\'\''.t3lib_BEfunc::deleteClause('static_languages'));
-		while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res))	{
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+			'lg_iso_2,lg_country_iso_2,lg_typo3',
+			'cc_static_languages',
+			'lg_typo3 != ' . $GLOBALS['TYPO3_DB']->fullQuoteStr('', 'cc_static_languages') . t3lib_BEfunc::deleteClause('cc_static_languages')
+		);
+		while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
 			$iso2typoDB[$row['lg_iso_2'].($row['lg_country_iso_2']?'_'.strtoupper($row['lg_country_iso_2']):'')] = $row['lg_typo3'];
 		}
 		ksort($iso2typoDB);

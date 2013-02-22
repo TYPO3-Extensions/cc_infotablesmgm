@@ -1,3 +1,7 @@
+2013-02-22  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Resolves #45764: Connect static_country_zones to static_countries
+
 2013-02-21  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Resolves #45732: Connect static_territories with static_countries
