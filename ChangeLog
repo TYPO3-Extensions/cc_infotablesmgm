@@ -1,3 +1,7 @@
+2013-02-26  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Resolves #45872: Generate xliff language file for language pack
+
 2013-02-24  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Resolves #45810: Require TYPO3 6.0.2 and PHP 5.3.7

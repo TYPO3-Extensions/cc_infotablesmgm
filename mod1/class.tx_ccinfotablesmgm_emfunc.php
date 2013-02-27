@@ -57,7 +57,7 @@ class tx_ccinfotablesmgm_emfunc {
 				if (is_array($emConf)) {
 					$extInfo['EM_CONF'] = $emConf;
 					$extInfo['path'] = $path;
-					$extInfo['files'] = t3lib_div::getFilesInDir($path . $extKey);
+					$extInfo['files'] = \TYPO3\CMS\Core\Utility\GeneralUtility::getFilesInDir($path . $extKey);
 
 				}
 		}
@@ -94,7 +94,7 @@ class tx_ccinfotablesmgm_emfunc {
 			$absPath = $extInfo['path'];
 			$emConfFileName = $absPath . 'ext_emconf.php';
 			if (@is_file($emConfFileName)) {
-				t3lib_div::writeFile($emConfFileName,$emConfFileContent);
+				\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($emConfFileName,$emConfFileContent);
 				return '"'.substr($emConfFileName,strlen($absPath)).'" was updated with a cleaned up EM_CONF array.';
 			} else die('Error: No file "'.$emConfFileName.'" found.');
 		}
@@ -136,7 +136,7 @@ class tx_ccinfotablesmgm_emfunc {
 				$lines = array_merge($lines, $this->constructArrayDefinition($v, $indent . chr(9)));
 				$lines[] = $indent . '),';
 			} else {
-				$lines[] = $indent . "'" . $k . "' => " . (t3lib_div::testInt($v) ? intval($v) : "'" . t3lib_div::slashJS(trim($v), 1) . "'"). ',' . $fMsg[$k];
+				$lines[] = $indent . "'" . $k . "' => " . (\TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($v) ? intval($v) : "'" . \TYPO3\CMS\Core\Utility\GeneralUtility::slashJS(trim($v), 1) . "'"). ',' . $fMsg[$k];
 			}
 		}
 		$lines [] =');';
@@ -160,7 +160,7 @@ class tx_ccinfotablesmgm_emfunc {
 				$lines = array_merge($lines, $this->constructArrayDefinition($value, $indent . chr(9)));
 				$lines[] = $indent . '),';
 			} else {
-				$lines[] = $indent . "'" . $key . "' => " . (t3lib_div::testInt($value) ? intval($value) : "'" . t3lib_div::slashJS(trim($value), 1) . "'"). ',';
+				$lines[] = $indent . "'" . $key . "' => " . (\TYPO3\CMS\Core\Utility\MathUtility::canBeInterpretedAsInteger($value) ? intval($value) : "'" . \TYPO3\CMS\Core\Utility\GeneralUtility::slashJS(trim($value), 1) . "'"). ',';
 			} 
 	 	 }
 	 	 return $lines;
@@ -180,7 +180,7 @@ class tx_ccinfotablesmgm_emfunc {
 
 				// Get files for extension:
 			$fileArr = array();
-			$fileArr = t3lib_div::getAllFilesAndFoldersInPath($fileArr,$extPath);
+			$fileArr = \TYPO3\CMS\Core\Utility\GeneralUtility::getAllFilesAndFoldersInPath($fileArr,$extPath);
 
 				// Calculate the total size of those files:
 			$totalSize = 0;
@@ -210,10 +210,10 @@ class tx_ccinfotablesmgm_emfunc {
 							'size' => filesize($file),
 							'mtime' => filemtime($file),
 							'is_executable' => (TYPO3_OS=='WIN' ? 0 : is_executable($file)),
-							'content' => t3lib_div::getUrl($file)
+							'content' => \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl($file)
 						);
-						if (t3lib_div::inList('php,inc',strtolower($fI['extension']))) {
-							$uploadArray['FILES'][$relFileName]['codelines']=count(explode(chr(10),$uploadArray['FILES'][$relFileName]['content']));
+						if (\TYPO3\CMS\Core\Utility\GeneralUtility::inList('php,inc',strtolower($fI['extension']))) {
+							$uploadArray['FILES'][$relFileName]['codelines']=count(explode(LF,$uploadArray['FILES'][$relFileName]['content']));
 							$uploadArray['misc']['codelines']+=$uploadArray['FILES'][$relFileName]['codelines'];
 							$uploadArray['misc']['codebytes']+=$uploadArray['FILES'][$relFileName]['size'];
 
@@ -228,7 +228,7 @@ class tx_ccinfotablesmgm_emfunc {
 
 					// Return upload-array:
 				return $uploadArray;
-			} else return 'Error: Total size of uncompressed upload ('.$totalSize.') exceeds '.t3lib_div::formatSize($this->maxUploadSize);
+			} else return 'Error: Total size of uncompressed upload ('.$totalSize.') exceeds '.\TYPO3\CMS\Core\Utility\GeneralUtility::formatSize($this->maxUploadSize);
 		}
 	}
 
@@ -298,10 +298,10 @@ class tx_ccinfotablesmgm_emfunc {
 	 * @return	string
 	 */
 	function renderVersion($v,$raise='') {
-		$parts = t3lib_div::intExplode('.',$v.'..');
-		$parts[0] = t3lib_div::intInRange($parts[0],0,999);
-		$parts[1] = t3lib_div::intInRange($parts[1],0,999);
-		$parts[2] = t3lib_div::intInRange($parts[2],0,999);
+		$parts = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode('.', $v . '..');
+		$parts[0] = \TYPO3\CMS\Core\Utility\MathUtility::isIntegerInRange($parts[0],0,999);
+		$parts[1] = \TYPO3\CMS\Core\Utility\MathUtility::isIntegerInRange($parts[1],0,999);
+		$parts[2] = \TYPO3\CMS\Core\Utility\MathUtility::isIntegerInRange($parts[2],0,999);
 
 		switch ((string)$raise) {
 			case 'main':
@@ -356,7 +356,7 @@ class tx_ccinfotablesmgm_emfunc {
 		}
 
 			// Return result:
-		return implode(chr(10).chr(10).chr(10),$tables);
+		return implode(LF.LF.LF,$tables);
 	}
 
 	/**
@@ -390,9 +390,9 @@ class tx_ccinfotablesmgm_emfunc {
 			$header = $this->dumpTableHeader($asTable,$dbFields[$asTable],1);
 			$insertStatements = $this->dumpTableContent($table,$asTable,$dbFields[$asTable]['fields']);
 
-			$out.= $dHeader.chr(10).chr(10).chr(10).
-					$header.chr(10).chr(10).chr(10).
-					$insertStatements.chr(10).chr(10).chr(10);
+			$out.= $dHeader.LF.LF.LF.
+					$header.LF.LF.LF.
+					$insertStatements.LF.LF.LF;
 		} else {
 			die('Fatal error: Table for dump not found in database...');
 		}
@@ -445,7 +445,7 @@ class tx_ccinfotablesmgm_emfunc {
 #
 '.($dropTableIfExists ? 'DROP TABLE IF EXISTS '.$table.';
 ' : '').'CREATE TABLE '.$table.' (
-'.implode(','.chr(10),$lines).'
+'.implode(','.LF,$lines).'
 );'
 			);
 		}
@@ -485,7 +485,7 @@ class tx_ccinfotablesmgm_emfunc {
 		$GLOBALS['TYPO3_DB']->sql_free_result($result);
 
 			// Implode lines and return:
-		return implode(chr(10),$lines);
+		return implode(LF,$lines);
 	}
 
 	/**

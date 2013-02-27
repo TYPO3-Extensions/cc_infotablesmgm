@@ -168,7 +168,7 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		if (($this->id && $access) || ($GLOBALS['BE_USER']->user['admin'] && !$this->id))	{
 
 				// Draw the header.
-			$this->doc = t3lib_div::makeInstance('bigDoc');
+			$this->doc = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('bigDoc');
 			$this->doc->backPath = $GLOBALS['BACK_PATH'];
 			$this->doc->form='<form action="" method="post">';
 
@@ -188,7 +188,7 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 			$this->content .= $this->doc->spacer(5);
 
 			$icon = '<img'.t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'],'gfx/refresh_n.gif', 'width="14" height="14"').' title="'.$GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xml:labels.reload',1).'" class="absmiddle" alt="" />';
-			$headerSection = '<a href="'.htmlspecialchars(t3lib_div::linkThisScript(array('unique' => uniqid('')))).'">'.$icon.'</a>';
+			$headerSection = '<a href="'.htmlspecialchars(\TYPO3\CMS\Core\Utility\GeneralUtility::linkThisScript(array('unique' => uniqid('')))).'">'.$icon.'</a>';
 			$this->content .= $this->doc->section('',$this->doc->funcMenu($headerSection,t3lib_BEfunc::getFuncMenu($this->id,'SET[function]',$this->MOD_SETTINGS['function'],$this->MOD_MENU['function'])));
 			$this->content .= $this->doc->divider(5);
 
@@ -206,7 +206,7 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		} else {
 				// If no access or if ID == zero
 
-			$this->doc = t3lib_div::makeInstance('mediumDoc');
+			$this->doc = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('mediumDoc');
 			$this->doc->backPath = $GLOBALS['BACK_PATH'];
 
 			$this->content .= $this->doc->startPage($GLOBALS['LANG']->getLL('title'));
@@ -286,7 +286,7 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		foreach ($tables as $table) {
 			$tableOrig = $table;
 			$table = 'cc_'.$table;
-			t3lib_div::loadTCA($table);
+			\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA($table);
 
 
 			$tableInfo = $GLOBALS['TYPO3_DB']->admin_get_fields($tableOrig);
@@ -438,7 +438,7 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 	 */
 	function get_iso2typo() {
 		
-		$csconv = t3lib_div::makeInstance('t3lib_cs');
+		$csconv = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('t3lib_cs');
 		$isoArray = $csconv->isoArray;
 		$charSetArray = $csconv->charSetArray;
 		ksort($charSetArray);
@@ -464,11 +464,11 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		$content = '';
 		$content .= '</form><form action="" method="post">';
 		
-		$csconv = t3lib_div::makeInstance('t3lib_cs');
+		$csconv = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('t3lib_cs');
 		ksort($csconv->isoArray);
 		$iso2typo = $this->get_iso2typo();
 		
-		if (t3lib_div::_GP('update')) {
+		if (\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('update')) {
 			$this->update_lg_typo3($iso2typo);
 		}
 
@@ -538,12 +538,12 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		$content = '';
 		$content .= '</form><form action="" method="post">';
 
-		if(t3lib_div::_GP('create') && $iso_code = t3lib_div::_GP('iso_code')) {
+		if(\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('create') && $iso_code = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('iso_code')) {
 
 			$content .=  $this->addLabels(strtolower($iso_code));
 			$content .= '<br />Done.';
 
-		}  elseif(t3lib_div::_GP('create_all')) {
+		}  elseif(\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('create_all')) {
 
 			foreach ($iso2typo as $iso_code => $t3code) {
 				$content .=  $this->addLabels(strtolower($iso_code));
@@ -618,27 +618,29 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		$iso_code_lower = strtolower($iso_code);
 		$iso_code_upper = strtoupper($iso_code);
 
-		$sourcePath = t3lib_extMgm::extPath('cc_infotablesmgm').'res/static_info_tables_lang_template/';
-		$sourceFiles = t3lib_div::getFilesInDir($sourcePath);
-		$destExtKey = 'static_info_tables_'.$iso_code_lower;
-		$destPath = PATH_site.'typo3conf/ext/'.$destExtKey.'/';
+		$sourcePath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('cc_infotablesmgm') . 'Resources/Private/LanguagePackTemplate/';
+		$sourceFiles = array();
+		$sourceFiles = \TYPO3\CMS\Core\Utility\GeneralUtility::getAllFilesAndFoldersInPath($sourceFiles, $sourcePath);
+		$sourceFiles = \TYPO3\CMS\Core\Utility\GeneralUtility::removePrefixPathFromList($sourceFiles, $sourcePath);
+		$destExtKey = 'static_info_tables_' . $iso_code_lower;
+		$destPath = PATH_site . 'typo3conf/ext/' . $destExtKey . '/';
 		
 		$row = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('lg_name_en', 'cc_static_languages', 'lg_iso_2='.$GLOBALS['TYPO3_DB']->fullQuoteStr(strtoupper($iso_code), 'cc_static_languages'));
 		$row = current($row);
-		
-		$xmlString = t3lib_div::getUrl(t3lib_extMgm::extPath('static_info_tables').'locallang_db.xml');
-		$xmlContent = t3lib_div::xml2array($xmlString);
+
+		$XliffParser = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Localization\\Parser\\XliffParser');
+		$sourceXliffFilePath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('static_info_tables') . 'Resources/Private/Language/locallang_db.xlf';
+		$parsedData = $XliffParser->getParsedData($sourceXliffFilePath, 'default');
 		$tcaLabels = '';
-		foreach ($xmlContent['data'] as $langKey => $labelArr) {
-			$tcaLabels .= "\n	" . '<languageKey index="' . $langKey . '" type="array">';
-			foreach ($labelArr as $labelkey => $label) {
-				if(substr($labelkey, -3)=='_en') {
-					$labelkey = substr($labelkey, 0, -2).$iso_code_lower;
-					$label = str_replace('(EN)', '('.$iso_code_upper.')', $label);
-					$tcaLabels .= "\n		" .'<label index="'. $labelkey . '">' . $label . '</label>';
+		foreach ($parsedData['default'] as $translationElementId => $translationElement) {
+			if (substr($translationElementId, -3) == '_en') {
+				$tcaLabels .= TAB . TAB . TAB . '<trans-unit id="' . substr($translationElementId, 0, -2) . $iso_code_lower . '" xml:space="preserve">' . LF;
+				$tcaLabels .= TAB . TAB . TAB . TAB . '<source>' . str_replace('(EN)', '(' . $iso_code_upper . ')', $translationElement[0]['source']) . '</source>' . LF;
+				if ($translationElement[0]['target']) {
+					$tcaLabels .= TAB . TAB . TAB . TAB . '<target>' . str_replace('(EN)', '(' . $iso_code_upper . ')', $translationElement[0]['target']) . '</target>' . LF;	
 				}
+				$tcaLabels .= TAB . TAB . TAB . '</trans-unit>' . LF;
 			}
-			$tcaLabels .= "\n	" . '</languageKey>';
 		}
 		
 		$updateQueries = '';
@@ -683,26 +685,36 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 			);
 
 		$tables = array_keys($this->index);
-
-		if(!is_dir($destPath)) {
-			t3lib_div::mkdir($destPath);
+		// Create language pack directory structure
+		if (!is_dir($destPath)) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath);
 		}
-		if (is_file($destPath.'ext_emconf.php')) {
+		if (!is_dir($destPath . 'Resources/')) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Resources/');
+		}
+		if (!is_dir($destPath . 'Resources/Private')) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Resources/Private');
+		}
+		if (!is_dir($destPath . 'Resources/Private/Language')) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Resources/Private/Language');
+		}
+		if (is_file($destPath . 'ext_emconf.php')) {
 			unset($sourceFiles[array_search('ext_emconf.php', $sourceFiles)]);
 		}
-		foreach ($sourceFiles as $file) {
-			$fileContent = t3lib_div::getUrl($sourcePath.$file);
+		foreach ($sourceFiles as $hash => $file) {
+			$fileContent = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl($sourcePath . $file);
 			foreach ($replace as $replMarker => $replStr) {
 				$fileContent = str_replace($replMarker, $replStr, $fileContent);
 			}
-			if (t3lib_div::writeFile($destPath.$file, $fileContent)) {
-				$content[] = $GLOBALS['LANG']->getLL('createdFile') . ' '.$destPath.$file;
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::writeFile($destPath . $file, $fileContent);
+			if ($success) {
+				$content[] = $GLOBALS['LANG']->getLL('createdFile') . ' '. $destPath . $file;
 			} else {
 				$content[] = 'Could not write file '.$destPath.$file;
 			}
 		}
 
-		require_once (t3lib_extMgm::extPath('cc_infotablesmgm').'mod1/class.tx_ccinfotablesmgm_emfunc.php');
+		require_once (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('cc_infotablesmgm').'mod1/class.tx_ccinfotablesmgm_emfunc.php');
 		$emfunc = new tx_ccinfotablesmgm_emfunc;
 		$emfunc->extUpdateEMCONF($destExtKey, $destPath);
 
@@ -720,14 +732,14 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		$content .= '</form><form action="" method="post">';
 		$content .= '<br />';
 
-		if(t3lib_div::_GP('exportStatic')) {
+		if(\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('exportStatic')) {
 
 			$exportContent ='';
 
-			$ext_tables = t3lib_div::getUrl(t3lib_extMgm::extPath('static_info_tables').'ext_tables.sql');
+			$ext_tables = \TYPO3\CMS\Core\Utility\GeneralUtility::getUrl(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('static_info_tables').'ext_tables.sql');
 
 
-			require_once (t3lib_extMgm::extPath('cc_infotablesmgm').'mod1/class.tx_ccinfotablesmgm_emfunc.php');
+			require_once (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('cc_infotablesmgm').'mod1/class.tx_ccinfotablesmgm_emfunc.php');
 			$emfunc = new tx_ccinfotablesmgm_emfunc;
 
 			$tables = array_keys($this->index);
@@ -744,7 +756,7 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 					// the extension manager export the fields from the language packs
 				$exportContent .= $emfunc->dumpStaticTable('cc_'.$table, $table, $includeFields) . LF;
 			}
-			t3lib_div::writeFile(t3lib_extMgm::extPath('cc_infotablesmgm').$filename, $exportContent);
+			\TYPO3\CMS\Core\Utility\GeneralUtility::writeFile(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('cc_infotablesmgm').$filename, $exportContent);
 
 			$content .= '<br />' . $GLOBALS['LANG']->getLL('exportedTo') . ' <a href="../'.htmlspecialchars($filename).'">'.htmlspecialchars($filename).'</a>';
 
@@ -769,13 +781,13 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		$content .= '</form><form action="" method="post">';
 		$content .= '<br />';
 
-		if(t3lib_div::_GP('create') AND $iso_code = t3lib_div::_GP('iso_code')) {
+		if(\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('create') && $iso_code = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('iso_code')) {
 
 			$out = $this->createLangpack($iso_code);
 			$content .= implode('<br />', $out);
 			$content .= '<br /><br />' .$GLOBALS['LANG']->getLL('languagePackCreated') . ' ' . $iso_code;
 
-		} elseif(t3lib_div::_GP('create_all')) {
+		} elseif(\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('create_all')) {
 
 			foreach ($iso2typo as $iso_code => $t3code) {
 				$out = $this->createLangpack($iso_code);
@@ -1424,7 +1436,7 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 
 		$content .= '</form><form action="" method="post">';
 
-		if (t3lib_div::_GP('import')) {
+		if (\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('import')) {
 
 			$content .= $this->importTerritories();
 			$content .= $this->importCountries();
@@ -1449,8 +1461,8 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 
 		$content .= '</form><form action="" method="post">';
 
-		$table = t3lib_div::_GP('move_table');
-		$mode = t3lib_div::_GP('mode');
+		$table = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('move_table');
+		$mode = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('mode');
 		$mode = $mode['checkout'] ? 'checkout' : 'checkin';
 
 		if ($table) {
@@ -1548,8 +1560,8 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 	 * Merges data from one table to another
 	 */
 	function mergeData() {
-		if (t3lib_div::_GP('merge')) {
-			if (is_array($recs = t3lib_div::_GP('recs'))) {
+		if (\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('merge')) {
+			if (is_array($recs = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('recs'))) {
 
 				foreach ($recs as $table => $recArr) {
 					foreach ($recArr as $uid => $row) {
@@ -1560,7 +1572,7 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 
 				}
 			}
-			if (is_array($recs = t3lib_div::_GP('import'))) {
+			if (is_array($recs = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('import'))) {
 				foreach ($recs as $table => $recArr) {
 					foreach ($recArr as $uid => $row) {
 						if (intval($uid)) {
@@ -1690,7 +1702,7 @@ if (defined('TYPO3_MODE') && $GLOBALS['TYPO3_CONF_VARS'][TYPO3_MODE]['XCLASS']['
 
 
 // Make instance:
-$SOBE = t3lib_div::makeInstance('tx_ccinfotablesmgm_module1');
+$SOBE = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_ccinfotablesmgm_module1');
 $SOBE->init();
 
 // Include files?

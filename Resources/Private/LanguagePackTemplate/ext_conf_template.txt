@@ -1,0 +1,2 @@
+  # cat=basic//10; type=boolean; label= ATTENTION: To import the data you have to select "UPDATE!" in the menu.
+dummy = 0
