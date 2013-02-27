@@ -703,8 +703,14 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		if (!is_dir($destPath . 'Configuration')) {
 			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Configuration/');
 		}
-		if (!is_dir($destPath . 'DomainModelExtension')) {
+		if (!is_dir($destPath . 'Configuration/DomainModelExtension')) {
 			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Configuration/DomainModelExtension/');
+		}
+		if (!is_dir($destPath . 'Configuration/TypoScript')) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Configuration/TypoScript/');
+		}
+		if (!is_dir($destPath . 'Configuration/TypoScript/Extbase')) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Configuration/TypoScript/Extbase/');
 		}
 		if (!is_dir($destPath . 'Resources/')) {
 			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Resources/');
