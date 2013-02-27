@@ -617,6 +617,7 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 
 		$iso_code_lower = strtolower($iso_code);
 		$iso_code_upper = strtoupper($iso_code);
+		$iso_code_camel = \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase(strtolower($iso_code));
 
 		$sourcePath = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('cc_infotablesmgm') . 'Resources/Private/LanguagePackTemplate/';
 		$sourceFiles = array();
@@ -679,6 +680,7 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		$replace = array (
 				'###LANG_ISO_LOWER###' => $iso_code_lower,
 				'###LANG_ISO_UPPER###' => $iso_code_upper,
+				'###LANG_ISO_CAMEL###' => $iso_code_camel,
 				'###LANG_NAME###' => $row['lg_name_en'],
 				'###LANG_TCA_LABELS###' => $tcaLabels,
 				'###LANG_SQL_UPDATE###' => $updateQueries,
@@ -689,14 +691,29 @@ class tx_ccinfotablesmgm_module1 extends t3lib_SCbase {
 		if (!is_dir($destPath)) {
 			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath);
 		}
+		if (!is_dir($destPath . 'Classes')) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Classes/');
+		}
+		if (!is_dir($destPath . 'Domain')) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Classes/Domain/');
+		}
+		if (!is_dir($destPath . 'Model')) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Classes/Domain/Model/');
+		}
+		if (!is_dir($destPath . 'Configuration')) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Configuration/');
+		}
+		if (!is_dir($destPath . 'DomainModelExtension')) {
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Configuration/DomainModelExtension/');
+		}
 		if (!is_dir($destPath . 'Resources/')) {
 			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Resources/');
 		}
 		if (!is_dir($destPath . 'Resources/Private')) {
-			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Resources/Private');
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Resources/Private/');
 		}
 		if (!is_dir($destPath . 'Resources/Private/Language')) {
-			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Resources/Private/Language');
+			$success = \TYPO3\CMS\Core\Utility\GeneralUtility::mkdir($destPath . 'Resources/Private/Language/');
 		}
 		if (is_file($destPath . 'ext_emconf.php')) {
 			unset($sourceFiles[array_search('ext_emconf.php', $sourceFiles)]);
