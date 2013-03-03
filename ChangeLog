@@ -1,3 +1,7 @@
+2013-03-03  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Follow-up to #45902: Generate additional extbase fields mapping for language packs
+
 2013-02-27  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Resolves #45902: Generate additional extbase fields mapping for language packs

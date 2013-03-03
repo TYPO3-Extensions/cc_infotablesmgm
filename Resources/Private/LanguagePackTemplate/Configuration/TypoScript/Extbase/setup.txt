@@ -4,36 +4,36 @@ config.tx_extbase {
 			SJBR\StaticInfoTables\Domain\Model\Country {
 				mapping {
 					columns {
-						cn_short_en.mapOnProperty = shortName###LANG_ISO_CAMEL###
+						cn_short_###LANG_ISO_LOWER###.mapOnProperty = shortName###LANG_ISO_CAMEL###
 					}
 				}
 			}
 			SJBR\StaticInfoTables\Domain\Model\CountryZone {
 				mapping {
 					columns {
-						zn_name_en.mapOnProperty = name###LANG_ISO_CAMEL###
+						zn_name_###LANG_ISO_LOWER###.mapOnProperty = name###LANG_ISO_CAMEL###
 					}
 				}
 			}
 			SJBR\StaticInfoTables\Domain\Model\Currency {
 				mapping {
 					columns {
-						cu_name_en.mapOnProperty = name###LANG_ISO_CAMEL###
-						cu_sub_name_en.mapOnProperty = subdivisionName###LANG_ISO_CAMEL###
+						cu_name_###LANG_ISO_LOWER###.mapOnProperty = name###LANG_ISO_CAMEL###
+						cu_sub_name_###LANG_ISO_LOWER###.mapOnProperty = subdivisionName###LANG_ISO_CAMEL###
 					}
 				}
 			}
 			SJBR\StaticInfoTables\Domain\Model\Language {
 				mapping {
 					columns {
-						lg_name_en.mapOnProperty = name###LANG_ISO_CAMEL###
+						lg_name_###LANG_ISO_LOWER###.mapOnProperty = name###LANG_ISO_CAMEL###
 					}
 				}
 			}
 			SJBR\StaticInfoTables\Domain\Model\Territory {
 				mapping {
 					columns {
-						tr_name_en.mapOnProperty = name###LANG_ISO_CAMEL###
+						tr_name_###LANG_ISO_LOWER###.mapOnProperty = name###LANG_ISO_CAMEL###
 					}
 				}
 			}
