@@ -42,6 +42,9 @@ CREATE TABLE cc_static_countries (
 	PRIMARY KEY (uid)
 );
 
+#
+# Table structure for table "static_country_zones"
+#
 CREATE TABLE cc_static_country_zones (
 	uid int(11) unsigned NOT NULL auto_increment,
 	pid int(11) unsigned DEFAULT '0' NOT NULL,
@@ -57,6 +60,9 @@ CREATE TABLE cc_static_country_zones (
 	PRIMARY KEY (uid)
 );
 
+#
+# Table structure for table "static_currencies"
+#
 CREATE TABLE cc_static_currencies (
 	uid int(11) unsigned NOT NULL auto_increment,
 	pid int(11) unsigned DEFAULT '0' NOT NULL,
@@ -93,5 +99,5 @@ CREATE TABLE cc_static_languages (
 	lg_sacred tinyint(3) unsigned DEFAULT '0' NOT NULL,
 	lg_constructed tinyint(3) unsigned DEFAULT '0' NOT NULL,
 	PRIMARY KEY (uid),
-	KEY parent (pid) 
+	KEY parent (pid)
 );
