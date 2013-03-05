@@ -10,5 +10,5 @@ $MCONF['access']='user,group';
 $MCONF['script']='index.php';
 
 $MLANG['default']['tabs_images']['tab'] = 'moduleicon.gif';
-$MLANG['default']['ll_ref']='LLL:EXT:cc_infotablesmgm/mod1/locallang_mod.xml';
+$MLANG['default']['ll_ref']='LLL:EXT:cc_infotablesmgm/Resources/Private/Language/locallang_mod.xlf';
 ?>

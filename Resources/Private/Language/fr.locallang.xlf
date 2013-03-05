@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2013-03-05T21:51:01Z" product-name="cc_infotablesmgm">
+		<header/>
+		<body>
+			<trans-unit id="title" xml:space="preserve" approved="yes">
+				<source>Static Info Tables Manager</source>
+				<target>Gestion des tables de données statiques</target>
+			</trans-unit>
+			<trans-unit id="info" xml:space="preserve" approved="yes">
+				<source>Info</source>
+				<target>Information sur les tables</target>
+			</trans-unit>
+			<trans-unit id="display" xml:space="preserve" approved="yes">
+				<source>Display data</source>
+				<target>Présenter les données</target>
+			</trans-unit>
+			<trans-unit id="compare" xml:space="preserve" approved="yes">
+				<source>Compare data</source>
+				<target>Comparer les données</target>
+			</trans-unit>
+			<trans-unit id="t3func" xml:space="preserve" approved="yes">
+				<source>TYPO3 functions</source>
+				<target>Fonctions TYPO3</target>
+			</trans-unit>
+			<trans-unit id="import" xml:space="preserve" approved="yes">
+				<source>Import data</source>
+				<target>Importer des données</target>
+			</trans-unit>
+			<trans-unit id="exportTo" xml:space="preserve" approved="yes">
+				<source>Export to</source>
+				<target>Exporter vers</target>
+			</trans-unit>
+			<trans-unit id="exportedTo" xml:space="preserve" approved="yes">
+				<source>Exported to:</source>
+				<target>Données non localisées exportées vers:</target>
+			</trans-unit>
+			<trans-unit id="withoutLocalizedData" xml:space="preserve" approved="yes">
+				<source>without localized data.</source>
+				<target>sans les données localisées.</target>
+			</trans-unit>
+			<trans-unit id="languageISOCode" xml:space="preserve" approved="yes">
+				<source>Language ISO A2 code optionaly followed by A2 country code:</source>
+				<target>Code de langue ISO A2 et, optionnellement, code de pays ISO A2:</target>
+			</trans-unit>
+			<trans-unit id="ISOCodeExample" xml:space="preserve" approved="yes">
+				<source>(eg.: de or pt_BR)</source>
+				<target>(par exemple: fr ou fr_CA)</target>
+			</trans-unit>
+			<trans-unit id="createdFile" xml:space="preserve" approved="yes">
+				<source>Created file</source>
+				<target>Fichier créé:</target>
+			</trans-unit>
+			<trans-unit id="languagePackCreated" xml:space="preserve" approved="yes">
+				<source>The following language pack was created:</source>
+				<target>L'extension de localisation suivante a été créée:</target>
+			</trans-unit>
+			<trans-unit id="exportStatic" xml:space="preserve" approved="yes">
+				<source>Export static data</source>
+				<target>Exporter les données statiques</target>
+			</trans-unit>
+			<trans-unit id="add_labels" xml:space="preserve" approved="yes">
+				<source>Add language labels</source>
+				<target>Ajouter les étiquettes de localisation</target>
+			</trans-unit>
+			<trans-unit id="add_all_labels" xml:space="preserve" approved="yes">
+				<source>Add ALL language labels</source>
+				<target>Ajouter toutes les étiquettes de localisation</target>
+			</trans-unit>
+			<trans-unit id="create_langpack" xml:space="preserve" approved="yes">
+				<source>Create language pack extension</source>
+				<target>Créer une extension de localisation</target>
+			</trans-unit>
+			<trans-unit id="create_langpack_all" xml:space="preserve" approved="yes">
+				<source>Create ALL language packs</source>
+				<target>Créer toutes les extensions de localisation</target>
+			</trans-unit>
+			<trans-unit id="convert" xml:space="preserve" approved="yes">
+				<source>Convert charset</source>
+				<target>Convertir l'encodage de caractères</target>
+			</trans-unit>
+			<trans-unit id="move" xml:space="preserve" approved="yes">
+				<source>Check out/Check in</source>
+				<target>Check out/Check in</target>
+			</trans-unit>
+			<trans-unit id="showDiffOnly" xml:space="preserve" approved="yes">
+				<source>Hide equal records</source>
+				<target>Cacher les enregistrements identiques</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

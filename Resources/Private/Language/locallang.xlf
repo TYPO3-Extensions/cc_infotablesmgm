@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-03-05T21:51:01Z" product-name="cc_infotablesmgm">
+		<header/>
+		<body>
+			<trans-unit id="title" xml:space="preserve">
+				<source>Static Info Tables Manager</source>
+			</trans-unit>
+			<trans-unit id="info" xml:space="preserve">
+				<source>Info</source>
+			</trans-unit>
+			<trans-unit id="display" xml:space="preserve">
+				<source>Display data</source>
+			</trans-unit>
+			<trans-unit id="compare" xml:space="preserve">
+				<source>Compare data</source>
+			</trans-unit>
+			<trans-unit id="t3func" xml:space="preserve">
+				<source>TYPO3 functions</source>
+			</trans-unit>
+			<trans-unit id="import" xml:space="preserve">
+				<source>Import data</source>
+			</trans-unit>
+			<trans-unit id="exportTo" xml:space="preserve">
+				<source>Export to</source>
+			</trans-unit>
+			<trans-unit id="exportedTo" xml:space="preserve">
+				<source>Exported to:</source>
+			</trans-unit>
+			<trans-unit id="withoutLocalizedData" xml:space="preserve">
+				<source>without localized data.</source>
+			</trans-unit>
+			<trans-unit id="languageISOCode" xml:space="preserve">
+				<source>Language ISO A2 code optionaly followed by A2 country code:</source>
+			</trans-unit>
+			<trans-unit id="ISOCodeExample" xml:space="preserve">
+				<source>(eg.: de or pt_BR)</source>
+			</trans-unit>
+			<trans-unit id="createdFile" xml:space="preserve">
+				<source>Created file</source>
+			</trans-unit>
+			<trans-unit id="languagePackCreated" xml:space="preserve">
+				<source>The following language pack was created:</source>
+			</trans-unit>
+			<trans-unit id="exportStatic" xml:space="preserve">
+				<source>Export static data</source>
+			</trans-unit>
+			<trans-unit id="add_labels" xml:space="preserve">
+				<source>Add language labels</source>
+			</trans-unit>
+			<trans-unit id="add_all_labels" xml:space="preserve">
+				<source>Add ALL language labels</source>
+			</trans-unit>
+			<trans-unit id="create_langpack" xml:space="preserve">
+				<source>Create language pack extension</source>
+			</trans-unit>
+			<trans-unit id="create_langpack_all" xml:space="preserve">
+				<source>Create ALL language packs</source>
+			</trans-unit>
+			<trans-unit id="convert" xml:space="preserve">
+				<source>Convert charset</source>
+			</trans-unit>
+			<trans-unit id="move" xml:space="preserve">
+				<source>Check out/Check in</source>
+			</trans-unit>
+			<trans-unit id="showDiffOnly" xml:space="preserve">
+				<source>Hide equal records</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

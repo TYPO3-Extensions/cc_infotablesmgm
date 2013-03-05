@@ -32,7 +32,7 @@ unset($MCONF);
 require ('conf.php');
 require ($GLOBALS['BACK_PATH'].'init.php');
 require ($GLOBALS['BACK_PATH'].'template.php');
-$GLOBALS['LANG']->includeLLFile('EXT:cc_infotablesmgm/mod1/locallang.xml');
+$GLOBALS['LANG']->includeLLFile('EXT:cc_infotablesmgm/Resources/Private/Language/locallang.xlf');
 require_once (PATH_t3lib.'class.t3lib_scbase.php');
 $GLOBALS['BE_USER']->modAccess($MCONF,1);	// This checks permissions and exits if the users has no permission for entry.
 	// DEFAULT initialization of a module [END]

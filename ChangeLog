@@ -1,6 +1,7 @@
 2013-03-05  Stanislas Rolland  <typo3@sjbr.ca>
 
-	* Resolves #45902: Synchronize table and tca definitions with base extension
+	* Resolves #46054: Synchronize table and tca definitions with base extension
+	* Resolves #46056: Move language files to Resources directory
 
 2013-03-03  Stanislas Rolland  <typo3@sjbr.ca>
 
