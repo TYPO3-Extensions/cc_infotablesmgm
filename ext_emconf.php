@@ -12,14 +12,14 @@
 
 $EM_CONF[$_EXTKEY] = array(
 	'title' => 'Static Info Tables Manager',
-	'description' => 'Use this module to maintain contents of Static Info Tables and generate the language pack extensions.',
+	'description' => 'This extension is obsolete and unsupported. Use Static Info Tables version 6.0.0+ instead.',
 	'category' => 'misc',
 	'shy' => 0,
-	'version' => '2.4.0',
+	'version' => '2.2.2',
 	'priority' => '',
 	'loadOrder' => '',
 	'module' => 'mod1',
-	'state' => 'stable',
+	'state' => 'obsolete',
 	'uploadfolder' => 0,
 	'createDirs' => '',
 	'modify_tables' => '',
@@ -33,10 +33,11 @@ $EM_CONF[$_EXTKEY] = array(
 	'constraints' => array(
 		'depends' => array(
 			'php' => '5.3.7-0.0.0',
-			'typo3' => '6.0.2-0.0.0',
-			'static_info_tables' => '2.4.0-0.0.0',
+			'typo3' => '4.3.0-4.7.99',
+			'static_info_tables' => '2.3.1-2.3.2',
 		),
 		'conflicts' => array(
+			'static_info_tables' => '6.0.0-99.99.99',
 		),
 		'suggests' => array(
 		),

@@ -1,3 +1,7 @@
+2013-05-24  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Updated version to 2.2.2
+
 2013-03-05  Stanislas Rolland  <typo3@sjbr.ca>
 
 	* Resolves #46054: Synchronize table and tca definitions with base extension
